@@ -21,12 +21,13 @@
 @synthesize reactions;
 @synthesize conditions;
 @synthesize comment=_comment;
-
+@dynamic script;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 		action =		[[RSActionRule alloc] init];
         reactions =		[NSArray array];
 		conditions =	[NSArray array];
@@ -34,6 +35,7 @@
     }
     return self;
 }
+
 - (NSString *) description {
 	NSString * desc = [NSString stringWithFormat:@"<%@ %p> { \n",[self className],self];
 		
@@ -68,34 +70,40 @@
 - (BOOL) stopBubbling {
 	return  [action stopBubbling];
 }
+
+
+- (void) setScript:(NSString*) stringSource {
+	_script = stringSource;
+}
+
 - (NSString *) script {
 	
-	NSString * script = @"";
+	if( [_script length] > 0 ) {
+		return _script;
+	}
 	
-	if([[action selector] isEqualToString:@"this"]) {
-		script = [script stringByAppendingString:@"$(this)"];
-	}
-	else {
-		script = [script stringByAppendingFormat:@"$('%@')",[action selector]];
-	}
-	script = [script stringByAppendingFormat:@".bind('%@',function(event,elem){\n",[action event]];
+	NSString * script = @"";
+	script = [script stringByAppendingFormat:@"$('%@')",[action selector]];
+	script = [script stringByAppendingFormat:@".bind('%@',function(event){ ",[action event]];
+	script = [script stringByAppendingString:@"$(this)"];
 	for(RSReactionRule * reaction in reactions) 
 	{
-		script = [script stringByAppendingFormat:@"\t%@\n",[reaction script]];
+		script = [script stringByAppendingFormat:@"%@",[reaction script]];
 	}
-	script = [script stringByAppendingString:@"})"];
-	
 	if([action preventDefault]) {
 		script = [script stringByAppendingString:@".preventDefault()"];
 	}
 	if([action stopBubbling]) {
 		script = [script stringByAppendingString:@".stopBubbling()"];
 	}
-	script = [script stringByAppendingString:@";\n"];
+	for(RSConditionRule * condition in conditions) 
+	{
+		script = [script stringByAppendingFormat:@"%@",[condition script]];
+	}
+	script = [script stringByAppendingString:@"});"];
 	
 	return script;
 }
-
 
 - (NSString *) emitScript {
 	

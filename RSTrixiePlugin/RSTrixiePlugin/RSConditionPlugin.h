@@ -17,5 +17,6 @@
 @property (retain) IBOutlet NSTextField * valueOfField;
 
 - (NSString *) expression;
+- (void) resetForm;
 
 @end

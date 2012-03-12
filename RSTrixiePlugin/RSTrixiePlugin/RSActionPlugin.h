@@ -26,4 +26,6 @@
 
 - (NSString *) trigger;
 
+- (void) resetForm;
+
 @end

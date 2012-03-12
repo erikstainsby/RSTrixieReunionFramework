@@ -23,7 +23,6 @@
 	return [NSString stringWithFormat:@"The method [callback] requires an override in the %@ instance of subclass %@",[self pluginName],[self className]];
 }
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,5 +32,12 @@
     
     return self;
 }
+
+- (void) resetForm {
+		//	[[self selectorField]  setStringValue:@""];  // vestigial - no selector field in use for Condition rules
+	[[self valueOfField] setStringValue:@""];
+	[self setPredicate:@""];
+}
+
 
 @end

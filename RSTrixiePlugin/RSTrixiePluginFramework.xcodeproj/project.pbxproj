@@ -15,6 +15,8 @@
 		031610AB14ECB935001FFC9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 031610A914ECB935001FFC9F /* InfoPlist.strings */; };
 		031610AF14ECB935001FFC9F /* RSTrixiePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610AE14ECB935001FFC9F /* RSTrixiePlugin.m */; };
 		031610B514ECBCB2001FFC9F /* RSTrixiePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 031610AD14ECB935001FFC9F /* RSTrixiePlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0370EFA7150D3B4F001EEDA4 /* RSCommentRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0370EFA5150D3B4F001EEDA4 /* RSCommentRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0370EFA8150D3B4F001EEDA4 /* RSCommentRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0370EFA6150D3B4F001EEDA4 /* RSCommentRule.m */; };
 		03FDE59F14F9B337001445EF /* RSActionRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FDE59D14F9B337001445EF /* RSActionRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03FDE5A014F9B337001445EF /* RSActionRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FDE59E14F9B337001445EF /* RSActionRule.m */; };
 		03FDE5A414F9B34B001445EF /* RSReactionRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 03FDE5A214F9B34B001445EF /* RSReactionRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +75,8 @@
 		031610AD14ECB935001FFC9F /* RSTrixiePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSTrixiePlugin.h; sourceTree = "<group>"; };
 		031610AE14ECB935001FFC9F /* RSTrixiePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTrixiePlugin.m; sourceTree = "<group>"; };
 		031610B614ECBD0D001FFC9F /* RSTrixiePlugin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSTrixiePlugin.xib; sourceTree = "<group>"; };
+		0370EFA5150D3B4F001EEDA4 /* RSCommentRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCommentRule.h; sourceTree = "<group>"; };
+		0370EFA6150D3B4F001EEDA4 /* RSCommentRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCommentRule.m; sourceTree = "<group>"; };
 		03FDE59D14F9B337001445EF /* RSActionRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSActionRule.h; sourceTree = "<group>"; };
 		03FDE59E14F9B337001445EF /* RSActionRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSActionRule.m; sourceTree = "<group>"; };
 		03FDE5A214F9B34B001445EF /* RSReactionRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSReactionRule.h; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				03FDE59E14F9B337001445EF /* RSActionRule.m */,
 				03FDE5A214F9B34B001445EF /* RSReactionRule.h */,
 				03FDE5A314F9B34B001445EF /* RSReactionRule.m */,
+				0370EFA5150D3B4F001EEDA4 /* RSCommentRule.h */,
+				0370EFA6150D3B4F001EEDA4 /* RSCommentRule.m */,
 				03FDE5A614F9B358001445EF /* RSConditionRule.h */,
 				03FDE5A714F9B358001445EF /* RSConditionRule.m */,
 				03FDE5AA14F9B381001445EF /* RSTrixieRule.h */,
@@ -208,6 +214,7 @@
 				03FDE61914FAE3F4001445EF /* RSTrixie.h in Headers */,
 				03FDE5AC14F9B381001445EF /* RSTrixieRule.h in Headers */,
 				03FE38A214EF3CE900C29234 /* RSAbstractRule.h in Headers */,
+				0370EFA7150D3B4F001EEDA4 /* RSCommentRule.h in Headers */,
 				03FDE59F14F9B337001445EF /* RSActionRule.h in Headers */,
 				03FDE5A414F9B34B001445EF /* RSReactionRule.h in Headers */,
 				03FDE5A814F9B358001445EF /* RSConditionRule.h in Headers */,
@@ -310,6 +317,7 @@
 				03FDE5B614F9BA2D001445EF /* RSReactionPlugin.m in Sources */,
 				03FDE5BA14F9BA3F001445EF /* RSConditionPlugin.m in Sources */,
 				030D480E1502F872005C2891 /* RSTrixieLoader.m in Sources */,
+				0370EFA8150D3B4F001EEDA4 /* RSCommentRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 
 @implementation RSReactionPlugin
 
+@dynamic action;
 @synthesize pluginName=_pluginName;
 @synthesize targetField=_targetField;
 @synthesize deltaField=_deltaField;
@@ -33,7 +34,6 @@
     if (self) {
         // Initialization code here.
     }
-    
     return self;
 }
 
@@ -48,37 +48,77 @@
 	return [[self pluginName] lowercaseString];
 }
 
+- (BOOL) hasTargetField {
+	return NO;
+}
+- (BOOL) hasDeltaField {
+	return NO;
+}
+- (BOOL) hasDelayField {
+	return NO;
+}
+- (BOOL) hasPeriodField {
+	return NO;
+}
+- (BOOL) hasOpacityField {
+	return NO;
+}
+- (BOOL) hasEasingField {
+	return NO;
+}
+- (BOOL) hasCallbackField {
+	return NO;
+}
 
 - (NSString*) emitScript {
 	
-	NSString * str = [NSString stringWithFormat:@"$('%@')",[[self targetField] stringValue]];
-	
+	NSString * str = @"";
 	if([[self delayField] integerValue]) {
 		str = [str stringByAppendingFormat:@".delay(%lu)",[[self delayField] integerValue]];
 	}
 	
 	NSString * params = @"";
-	
 	if([[[self periodField] stringValue] length] > 0) {
 		params = [params stringByAppendingFormat:@"%lu",[[self periodField] integerValue]];
 	}
 	if([[self opacityField] floatValue]) {
-		params = [params stringByAppendingFormat:@",%.3f",[[self opacityField] floatValue]];
+		if([params length] > 0) {
+			params = [params stringByAppendingString:@","];
+		}
+		params = [params stringByAppendingFormat:@"%2f",[[self opacityField] floatValue]];
 	}
 	if([[[self deltaField] stringValue] length] > 0 ) {
-		params = [params stringByAppendingFormat:@",'%@'",[[self deltaField] stringValue]];
+		if([params length] > 0) {
+			params = [params stringByAppendingString:@","];
+		}
+		params = [params stringByAppendingFormat:@"'%@'",[[self deltaField] stringValue]];
 	}
 	if([[[self easingField] stringValue] length] > 0) {
-		params = [params stringByAppendingFormat:@",\"%@\"",[[self easingField] stringValue]];
+		if([params length] > 0) {
+			params = [params stringByAppendingString:@","];
+		}
+		params = [params stringByAppendingFormat:@"'%@'",[[self easingField] stringValue]];
 	}
 	if([[[self callbackField] stringValue] length] > 0) {
-		params = [params stringByAppendingFormat:@",%@",[[self callbackField] stringValue]];
+		if([params length] > 0) {
+			params = [params stringByAppendingString:@","];
+		}
+		params = [params stringByAppendingFormat:@"%@",[[self callbackField] stringValue]];
 	}
 	
-	str = [str stringByAppendingFormat:@".%@(%@);",[self action],params];
+	str = [str stringByAppendingFormat:@".%@(%@)",[self action],params];
 	params = nil;
 	return str;
 }
 
+- (void) resetForm {
+	if( [self hasTargetField]) {	[[self targetField]		setStringValue:@""];  }
+	if( [self hasDeltaField])  {	[[self deltaField]		setStringValue:@""];  }
+	if( [self hasOpacityField]){	[[self opacityField]	setStringValue:@""];  }
+	if( [self hasDelayField])  {	[[self delayField]		setStringValue:@""];  } 
+	if( [self hasPeriodField]) {	[[self periodField]		setStringValue:@""];  } 
+	if( [self hasEasingField]) {	[[self easingField]		setStringValue:@""];  }
+	if( [self hasCallbackField]){	[[self callbackField]	setStringValue:@""];  }
+}
 
 @end

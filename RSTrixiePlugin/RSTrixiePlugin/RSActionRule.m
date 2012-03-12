@@ -29,7 +29,6 @@
 	return [NSString stringWithFormat:@"$('%@').bind('%@',",[self selector],[self event]];
 }
 
-
 - (id) valueForUndefinedKey:(NSString *) key {
 	NSLog(@"%s- [%04d] Undefined key: %@", __PRETTY_FUNCTION__, __LINE__, key);
 	return @"undefined";

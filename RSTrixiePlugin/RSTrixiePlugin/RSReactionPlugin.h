@@ -23,6 +23,15 @@
 @property (retain) IBOutlet NSTextField * easingField;
 @property (retain) IBOutlet NSTextField * callbackField;
 
+- (BOOL) hasTargetField;
+- (BOOL) hasDeltaField;
+- (BOOL) hasDelayField;
+- (BOOL) hasPeriodField;
+- (BOOL) hasOpacityField;
+- (BOOL) hasEasingField;
+- (BOOL) hasCallbackField;
+
 - (NSString *) emitScript;
+- (void) resetForm;
 
 @end 

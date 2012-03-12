@@ -1,5 +1,5 @@
 //
-//  RSCompoundRule.h
+//  RSTrixieRule.h
 //  RSTrixiePluginFramework
 //
 //  Created by Erik Stainsby on 12-02-25.
@@ -10,13 +10,17 @@
 #import "RSActionRule.h"
 #import "RSReactionRule.h"
 #import "RSConditionRule.h"
+#import "RSCommentRule.h"
 
 @interface RSTrixieRule : RSAbstractRule
-
+{
+	NSString * _script;
+}
 @property (retain) RSActionRule * action;
 @property (retain) NSArray * reactions;
 @property (retain) NSArray * conditions;
 @property (retain) NSString * comment;
+@property (retain) NSString * script;
 
 - (NSString *)	selector;
 - (NSString *)	event;
@@ -26,6 +30,7 @@
 
 - (NSString *)	emitScript;
 - (NSString *)	description;
+
 
 - (id) valueForUndefinedKey:(NSString *) key;
 

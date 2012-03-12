@@ -57,4 +57,14 @@
 }
 
 
+- (void) resetForm {
+	[[self selectorField]  setStringValue:@""];
+	if([self hasPreventDefaultButton]) {
+		[[self preventDefaultButton] setState:NSOffState];
+	}
+	if([self hasStopBubblingButton]) {
+		[[self stopBubblingButton] setState:NSOffState];
+	}
+}
+
 @end
